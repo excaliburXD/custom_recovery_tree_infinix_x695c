@@ -54,7 +54,7 @@ jobs:
       working-directory: workspace
       
     - name: Clone device tree
-      run: |t
+      run: |
         git clone https://github.com/excaliburXD/Infinix-X695C.git -b Master ./device/infinix/Infinix_X695C
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
@@ -81,4 +81,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: twrp_Infinix_X695C
-        path: workspace/out/target/product/X695C/boot.img
+        path: workspace/out/target/product/Infinix_X695C/boot.img
