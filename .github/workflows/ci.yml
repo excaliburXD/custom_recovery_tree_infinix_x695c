@@ -55,7 +55,7 @@ jobs:
       
     - name: Clone device tree
       run: |t
-        git clone https://github.com/excaliburXD/Infinix-X695C.git -b TWRP-11 ./device/infinix/Infinix_X695C
+        git clone https://github.com/excaliburXD/Infinix-X695C.git -b Master ./device/infinix/Infinix_X695C
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Sync Device Dependencies
