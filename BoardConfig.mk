@@ -1,25 +1,11 @@
 #
-# Copyright (C) 2020 The Android Open Source Project
-# Copyright (C) 2020 The TWRP Open Source Project
-# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
 DEVICE_PATH := device/infinix/Infinix_X695C
-
-# For building with minimal manifest
-ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -40,11 +26,11 @@ TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 
 # Reduce Size
-TW_EXTRA_LANGUAGES := false
+TW_EXTRA_LANGUAGES := true
 TW_OEM_BUILD := false
 
 # Copyright
-TW_DEVICE_VERSION := by-@Gilanggegea
+TW_DEVICE_VERSION := X695C/X695 | by-@Gilanggegea
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := Infinix_X695C
@@ -59,11 +45,11 @@ BOARD_USES_MTK_HARDWARE := true
 BOARD_HAS_MTK_HARDWARE := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := Infinix_X695C
+TARGET_OTA_ASSERT_DEVICE := X695C,X695,x695c,x695
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
-BOARD_NAME := CY-X695C-H854-J
+#BOARD_NAME := CY-X695C-H854-J
 BOARD_KERNEL_IMAGE_NAME := kernel
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_BOOT_HEADER_VERSION := 2
@@ -75,7 +61,7 @@ BOARD_RAMDISK_OFFSET := 0x07c08000
 BOARD_DTB_OFFSET := 0x0bc08000
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-TARGET_KERNEL_ARCH := arm64
+#TARGET_KERNEL_ARCH := arm64
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
@@ -196,3 +182,6 @@ TW_STATUS_ICONS_ALIGN := center
 TW_CUSTOM_CPU_POS := "300"
 TW_CUSTOM_CLOCK_POS := "70"
 TW_CUSTOM_BATTERY_POS := "790"
+
+# For building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
