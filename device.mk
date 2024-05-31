@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/infinix/X695C
+LOCAL_PATH := device/infinix/radiant
 
 # VAB
 ENABLE_VIRTUAL_AB := true
@@ -43,7 +43,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 30
+PRODUCT_TARGET_VNDK_VERSION := current
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
