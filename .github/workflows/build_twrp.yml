@@ -14,15 +14,15 @@ on:
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
-        default: 'https://github.com/excaliburXD/Infinix-X695C.git'
+        default: 'https://github.com/excaliburXD/custom_recovery_tree_infinix_x695c.git'
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'twrp'
+        default: 'radiant-twrp-11'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
-        default: 'device/infinix/Infinix_X695C'
+        default: 'device/infinix/radiant'
       COMMON_TREE_URL:
         description: 'COMMON_TREE_URL (if no common tree, leave blank)'
         required: false
@@ -32,11 +32,11 @@ on:
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
-        default: 'Infinix_X695C'
+        default: 'radiant'
       MAKEFILE_NAME:
         description: 'MAKEFILE_NAME'
         required: true
-        default: 'twrp_Infinix_X695C'
+        default: 'twrp_radiant'
       BUILD_TARGET:
         description: 'BUILD_TARGET'
         required: true
