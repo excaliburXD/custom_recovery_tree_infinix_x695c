@@ -13,8 +13,7 @@
 /vbmeta                   emmc     /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="Vbmeta";backup=1;flashimg=1;slotselect;
 /vbmeta_system            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_system     flags=display="Vbmeta System";backup=1;flashimg=1;slotselect;
 /vbmeta_vendor            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="Vbmeta Vendor";backup=1;flashimg=1;slotselect;
-#/metadata                 ext4     /dev/block/platform/bootdevice/by-name/md_udc            flags=display="Metadata"
-/metadata                 ext4     /dev/block/by-name/metadata                              flags=display=metadata;backup
+/metadata                 ext4     /dev/block/platform/bootdevice/by-name/md_udc            flags=display="Metadata"
 
 # Super partitions mount
 /system_root              ext4     /dev/block/mapper/system                                 flags=backup=0;removable;slotselect
