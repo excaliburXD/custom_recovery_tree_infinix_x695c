@@ -3,3 +3,4 @@
 * Status: Test works (buildable & bootable)
 * Credits: gilanggegea
 
+GRUP https://t.me/InfinixNote10PID GUIDE https://t.me/infinixupdaterecovery/7
