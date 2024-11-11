@@ -128,6 +128,7 @@ BOARD_ROOT_EXTRA_FOLDERS += metadata tranfs
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_SYSTEM := system
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Properties Prop
@@ -171,7 +172,7 @@ TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1200
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_FRAMERATE := 90
+TW_FRAMERATE := 60
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_DEVICE_VERSION := Infinix Note 10 Pro | Gilanggegea
 
