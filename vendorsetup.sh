@@ -72,7 +72,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VARIANT="X695C/X695"
 	export OF_PATCH_AVB20=1
 	export OF_MAINTAINER="Gilanggegea"
-        export FOX_BUILD_DEVICE="Infinix Note 10 Pro"
+        export FOX_BUILD_DEVICE="ʀᴀᴅɪᴀɴᴛ"
  	export FOX_BUILD_TYPE="AB Devices"
 	export OF_ADVANCED_SECURITY=1
 	export OF_USE_TWRP_SAR_DETECT=1
