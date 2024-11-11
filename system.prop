@@ -9,3 +9,4 @@ ro.hardware.gatekeeper=beanpod
 ro.mtk_tee_gp_support=1
 ro.mtk_microtrust_tee_support=1
 fbe.metadata.wrappedkey=true
+ro.postinstall.fstab.prefix=/system
