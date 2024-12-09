@@ -1,82 +1,76 @@
 #
 # Copyright (C) 2024 The Android Open Source Project
-# Copyright (C) 2024 The TWRP Open Source Project
 # Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/infinix/radiant
+LOCAL_PATH := device/infinix/X695C
 
-# VAB
+# Virtual A/B
 ENABLE_VIRTUAL_AB := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# AB
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    system \
-    vendor \
-    product \
-    system_ext \
-    boot \
-    vbmeta_vendor \
-    vbmeta_system
-    
+# A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
+    FILESYSTEM_TYPE_system=$(BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE) \
     POSTINSTALL_OPTIONAL_system=true
 
-# Dynamic Partition
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := current
-
-# API
-PRODUCT_SHIPPING_API_LEVEL := 30
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2099-12-31
-
-# Health Hal
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=erofs \
+    POSTINSTALL_OPTIONAL_vendor=true
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-mtkimpl.recovery \
-    android.hardware.boot@1.1-mtkimpl
+    android.hardware.boot@1.0-service \
+    android.hardware.boot@1.0-mtkimpl \
+    android.hardware.boot@1.0-mtkimpl.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
-
-# Fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
-
-PRODUCT_PACKAGES_DEBUG += \
+    bootctl \
     update_engine_client
+
+PRODUCT_PACKAGES += \
+    bootctrl.$(PRODUCT_PLATFORM) \
+    bootctrl.$(PRODUCT_PLATFORM).recovery
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
     update_engine \
-    update_verifier 
+    update_verifier \
+    update_engine_sideload
 
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+# API
+PRODUCT_SHIPPING_API_LEVEL := 30
+
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
+
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 30
+
+# Additional Libraries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libkeymaster4 \
+    libpuresoftkeymasterdevice \
+    libion
+
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so

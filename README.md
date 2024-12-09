@@ -1,7 +1,10 @@
-# TWRP Device tree for INFINIX NOTE 10 PRO (X695C/X695)
+# Android device tree for Infinix Infinix X695C (Infinix-X695C)
 
-* Status: Test works (buildable & bootable)
-* Credits: gilanggegea
-
-GRUP https://t.me/InfinixNote10PID
-GUIDE https://t.me/infinixupdaterecovery/7
+```
+#
+# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+```
