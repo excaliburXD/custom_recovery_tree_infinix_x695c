@@ -7,10 +7,7 @@ on init
     chmod mkdir /mnt/vendor/persist 0771 system system
 
 on fs && property:ro.debuggable=0
-    # distinguish USB shoulde connect or not, i.e. CDP vs SDP
     write /sys/class/udc/musb-hdrc/device/cmode 2
-    # set charging free due to it wait for USB activation
-    start adbd
 
 on post-fs
     # Support A/B feature for EMMC and UFS boot region
@@ -34,7 +31,7 @@ on post-fs
     setprop ro.boot.slot_suffix $(getprop ro.boot.slot_suffix)
     setprop ro.boot.dynamic_partitions true
 
-    # Symlink active slot suffix
+    # Detect active slot suffix
     symlink /dev/block/by-name/system_a /system
     symlink /dev/block/by-name/vendor_a /vendor
     symlink /dev/block/by-name/product_a /product
@@ -85,8 +82,8 @@ service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
     seclabel u:r:recovery:s0
 
 on property:hwservicemanager.ready=true
-    exec ls /system/bin/android.hardware.keymaster@4.0-service.beanpod && start keymaster-4-0 || log "Keymaster binary not found"
-    exec ls /system/bin/android.hardware.gatekeeper@1.0-service && start gatekeeper-1-0 || log "Gatekeeper binary not found"
+    exec ls /system/bin/android.hardware.keymaster@4.0-service.beanpod && start keymaster-4-0 || log "Keymaster binary not & detected"
+    exec ls /system/bin/android.hardware.gatekeeper@1.0-service && start gatekeeper-1-0 || log "Gatekeeper binary not found & detected"
 
 on property:vendor.sys.listener.registered=true
     start gatekeeper-1-0
