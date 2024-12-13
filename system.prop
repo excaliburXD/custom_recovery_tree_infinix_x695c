@@ -15,6 +15,7 @@ ro.debuggable=1
 ro.hardware.kmsetkey=beanpod
 ro.hardware.gatekeeper=beanpod
 keymaster_ver=4.0
+persist.vendor.keymaster.init=true
 
 # TEE
 ro.mtk_tee_gp_support=1
