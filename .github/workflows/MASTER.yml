@@ -1,4 +1,4 @@
-name: Recovery Build TWRP
+name: MASTER
 
 on:
   workflow_dispatch:
