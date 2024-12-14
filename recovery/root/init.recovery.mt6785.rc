@@ -17,6 +17,18 @@ on post-fs
     symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/platform/bootdevice/by-name/preloader_ufs_a
     symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/platform/bootdevice/by-name/preloader_ufs_b
 
+    exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
+
+on post-fs
+    # Set active slot suffix
+    setprop ro.boot.slot_suffix $(getprop ro.boot.slot_suffix)
+    setprop ro.boot.dynamic_partitions true
+
+    # Detect active slot suffix
+    symlink /dev/block/by-name/system_a /system
+    symlink /dev/block/by-name/vendor_a /vendor
+    symlink /dev/block/by-name/product_a /product
+    
 on fs
     mkdir /mnt/vendor 0700 root root
     mkdir /mnt/vendor/protect_f 0700 root root
