@@ -63,14 +63,3 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
-
-# Additional Libraries
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libkeymaster4 \
-    libpuresoftkeymasterdevice \
-    libion
-
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
