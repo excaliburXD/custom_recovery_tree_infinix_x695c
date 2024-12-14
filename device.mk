@@ -14,29 +14,42 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
-    FILESYSTEM_TYPE_system=$(BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE) \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
-    POSTINSTALL_OPTIONAL_vendor=true
+# Dynamic Partition
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := current
+
+# API
+PRODUCT_SHIPPING_API_LEVEL := 30
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
+
+# Health Hal
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-service \
-    android.hardware.boot@1.1-mtkimpl \
-    android.hardware.boot@1.1-mtkimpl.recovery
+    android.hardware.boot@1.1-mtkimpl.recovery \
+    android.hardware.boot@1.1-mtkimpl
 
 PRODUCT_PACKAGES_DEBUG += \
-    bootctl \
-    update_engine_client
+    bootctrl
 
+# Fastbootd
 PRODUCT_PACKAGES += \
-    bootctrl.$(PRODUCT_PLATFORM) \
-    bootctrl.$(PRODUCT_PLATFORM).recovery
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
+
+PRODUCT_PACKAGES_DEBUG += \
+    update_engine_client
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -45,21 +58,5 @@ PRODUCT_PACKAGES += \
     update_verifier \
     update_engine_sideload
 
-# API
-PRODUCT_SHIPPING_API_LEVEL := 30
-
-# Dynamic partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
-
-# Health HAL
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
-
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 30
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
