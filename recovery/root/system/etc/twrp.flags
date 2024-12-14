@@ -15,12 +15,12 @@
 /vbmeta_vendor            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="vbmeta Vendor.img";backup=1;flashimg=1;slotselect
 /tranfs                   ext4     /dev/block/platform/bootdevice/by-name/tranfs            flags=display="Tranfs";
 
-# Removable
-/external_sd              vfat     /dev/block/mmcblk0p1         /dev/block/mmcblk0          flags=fsflags=utf8;display="MicroSD";storage;wipeingui;removable                      
-/usb-otg                  vfat     /dev/block/sdd1              /dev/block/sdd              flags=fsflags=utf8;display="USB-OTG";storage;wipeingui;removable
-
 # Flashable logical partitions
 /system_image             emmc      /dev/block/mapper/system                                flags=slotselect;backup=1;display="System Image";flashimg=1
 /system_ext_image         emmc      /dev/block/mapper/system_ext                            flags=slotselect;backup=1;display="System_EXT Image";flashimg=1
 /product_image            emmc      /dev/block/mapper/product                               flags=slotselect;backup=1;display="Product Image";flashimg=1
 /vendor_image             emmc      /dev/block/mapper/vendor                                flags=slotselect;backup=1;display="Vendor Image";flashimg=1
+
+# Removable
+/external_sd              vfat     /dev/block/mmcblk0p1         /dev/block/mmcblk0          flags=fsflags=utf8;display="MicroSD";storage;wipeingui;removable                      
+/usb-otg                  vfat     /dev/block/sdd1              /dev/block/sdd              flags=fsflags=utf8;display="USB-OTG";storage;wipeingui;removable
