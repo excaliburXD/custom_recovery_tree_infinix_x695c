@@ -19,7 +19,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export PLATFORM_VERSION_LAST_STABLE= "$PLATFORM_VERSION"
    	export PLATFORM_SECURITY_PATCH="2099-12-31"
      	export TW_DEFAULT_LANGUAGE="en"
-    	export OF_DEVICE_ALT="X695C,X695,x695c,x695,Radiant,radiant"
+    	export OF_DEVICE_ALT="Radiant,radiant,X695C,X695,x695c,x695"
 	export LC_ALL="C"
 	export OF_AB_DEVICE=1
 	export FOX_EXTREME_SIZE_REDUCTION=1
