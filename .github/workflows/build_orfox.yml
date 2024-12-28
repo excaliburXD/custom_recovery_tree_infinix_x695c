@@ -1,4 +1,4 @@
-name: Recovery Build-orfox
+name: Recovery Build FOX
 
 on:
   workflow_dispatch:
