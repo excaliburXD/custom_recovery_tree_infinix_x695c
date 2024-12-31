@@ -178,7 +178,7 @@ TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_SUPPORTS_AB := true
 TW_HAS_SDCARD := true
 TW_INCLUDE_LIBLP := true
-TW_DEVICE_VERSION := ʀᴀᴅɪᴀɴᴛ | Gilanggegea
+TW_DEVICE_VERSION := radiant | Gilanggegea
 
 # Recovery
 BOARD_USES_RECOVERY_AS_BOOT := true
